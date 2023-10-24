@@ -1,7 +1,13 @@
 fn main() {
     let list = vec![1, 2, 3];
 
-    let result: Vec<_> = list.iter().map(|x| x + 1).collect();
+    let mut foo = list.iter().map(|x| x + 1);
 
-    println!("{:?}", result);
+    let mut new_vector = vec![];
+
+    while let Some(x) = foo.next() {
+        new_vector.push(x);
+    }
+
+    println!("{:?}", new_vector);
 }
