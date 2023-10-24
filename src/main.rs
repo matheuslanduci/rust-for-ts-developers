@@ -1,13 +1,8 @@
 fn main() {
-    let list = vec![1, 2, 3];
+    let file = std::fs::read_to_string("lines").unwrap();
 
-    let mut foo = list.iter().map(|x| x + 1);
-
-    let mut new_vector = vec![];
-
-    while let Some(x) = foo.next() {
-        new_vector.push(x);
-    }
-
-    println!("{:?}", new_vector);
+    file.lines()
+        .enumerate()
+        .filter(|(index, _)| index % 2 == 0)
+        .for_each(|(_, line)| println!("{}", line))
 }

@@ -1,5 +1,8 @@
-const list = [1, 2, 3];
+import { readFileSync } from "node:fs";
 
-const sum = (n: number) => n + 1;
+const lines = readFileSync("./lines")
+  .toString("utf-8")
+  .split("\n")
+  .filter((_, i) => i % 2 === 0);
 
-console.log(list.map(sum));
+lines.map((line) => console.log(line));
