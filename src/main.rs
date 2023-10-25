@@ -4,5 +4,7 @@ fn main() {
     file.lines()
         .enumerate()
         .filter(|(index, _)| index % 2 == 0)
+        .skip(2)
+        .take(2)
         .for_each(|(_, line)| println!("{}", line))
 }
