@@ -1,22 +1,11 @@
-type Custom = {
-  age: number;
-  name: string;
-};
+function multiply(number: number | undefined): number | undefined {
+  if (number === undefined) {
+    return undefined;
+  }
 
-type Item = number | string | Custom;
-
-function append(items: Item[]) {
-  items.push("hello fem");
+  return number * 5;
 }
 
-const items: Item[] = [];
-
-console.log(items);
-
-append(items);
-
-console.log(items);
-
-const numbers: number[] = []
-
-append(numbers)
+console.log("By 0: ", multiply(0));
+console.log("By 5: ", multiply(5));
+console.log("By undefined: ", multiply(undefined));
