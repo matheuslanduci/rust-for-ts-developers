@@ -1,9 +1,22 @@
-import { readFileSync } from "node:fs";
+type Custom = {
+  age: number;
+  name: string;
+};
 
-const lines = readFileSync("./lines")
-  .toString("utf-8")
-  .split("\n")
-  .filter((_, i) => i % 2 === 0)
-  .filter((_, i) => i > 1 && i < 4);
+type Item = number | string | Custom;
 
-lines.map((line) => console.log(line));
+function append(items: Item[]) {
+  items.push("hello fem");
+}
+
+const items: Item[] = [];
+
+console.log(items);
+
+append(items);
+
+console.log(items);
+
+const numbers: number[] = []
+
+append(numbers)

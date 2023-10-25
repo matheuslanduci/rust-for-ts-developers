@@ -1,10 +1,20 @@
-fn main() {
-    let file = std::fs::read_to_string("lines").unwrap();
+struct Custom {
+    age: usize,
+    name: String,
+}
 
-    file.lines()
-        .enumerate()
-        .filter(|(index, _)| index % 2 == 0)
-        .skip(2)
-        .take(2)
-        .for_each(|(_, line)| println!("{}", line))
+enum Item {
+    Number(usize),
+    String(String),
+    MyCustom(Custom),
+}
+
+fn append(items: &mut Vec<Item>) {
+    items.push(Item::String("hello, fem".into()));
+}
+
+fn main() {
+    let mut items: Vec<Item> = vec![];
+
+    append(&mut items);
 }
