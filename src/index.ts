@@ -1,11 +1,6 @@
-function multiply(number: number | undefined): number | undefined {
-  if (number === undefined) {
-    return undefined;
-  }
-
-  return number * 5;
+function practice(numbers: number[], index: number) {
+  return (numbers[index] ?? index) * 5;
 }
 
-console.log("By 0: ", multiply(0));
-console.log("By 5: ", multiply(5));
-console.log("By undefined: ", multiply(undefined));
+console.log("practice([1, 2, 3], 1)", practice([1, 2, 3], 0));
+console.log("practice([1, 2, 3], 10)", practice([1, 2, 3], 10));
