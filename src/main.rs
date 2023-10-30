@@ -1,15 +1,18 @@
+#[derive(Debug)]
+struct Item {
+    count: usize,
+}
+
+fn add_one(item: &mut Item) {
+    item.count += 1;
+}
+
 fn main() {
-    let file = std::env::args()
-        .nth(1)
-        .expect("The file name should be present");
+    let mut item = Item { count: 1 };
 
-    let content = std::fs::read_to_string(file).expect("Ooops, the file does not exist!");
+    println!("{:?}", item);
 
-    content.lines().for_each(|line| {
-        if let Ok(value) = line.parse::<usize>() {
-            println!("{}", value)
-        } else {
-            println!("Line not a number");
-        }
-    })
+    add_one(&mut item);
+
+    println!("{:?}", item);
 }
