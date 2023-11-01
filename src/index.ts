@@ -1,19 +1,24 @@
-import { readFileSync } from "node:fs";
+interface Area {
+  area(): number;
+}
 
-const file = process.argv[2] ?? "";
+class Rectangle implements Area {
+  constructor(
+    public x: number,
+    public y: number,
+    public width: number,
+    public height: number
+  ) {}
 
-try {
-  const content = readFileSync(file).toString("utf-8");
+  area(): number {
+    return this.width * this.height;
+  }
+}
 
-  content.split("\n").map((value) => {
-    const print = parseInt(value);
+class Circle implements Area {
+  constructor(public x: number, public y: number, public radius: number) {}
 
-    if (isNaN(print)) {
-      console.log("Line not a number");
-    } else {
-      console.log(print);
-    }
-  });
-} catch (err) {
-  console.log("Ooops, the file does not exist!");
+  area(): number {
+    return Math.PI * this.radius * this.radius;
+  }
 }

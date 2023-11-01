@@ -1,25 +1,16 @@
-#[derive(Debug)]
-struct Item {
-    count: usize,
-}
+mod shapes;
 
-fn add_one(item: &mut Item) {
-    item.count += 1;
-}
-
-fn print_all(items: &Vec<Item>) {
-    for item in items {        
-        println!("{:?}", item);
-    }
-}
+use crate::shapes::{area::Area, circle::Circle, rect::Rect};
 
 fn main() {
-    let mut items = vec![Item { count: 1 }];
+    let rect = Rect::default();
 
-    let first = items.get_mut(0);
-    let second = items.get_mut(1);
+    let circle = Circle {
+        x: 0.0,
+        y: 0.0,
+        radius: 10.0,
+    };
 
-    println!("{:?}", second);
-
-    print_all(&items);
+    println!("{}", circle.area());
+    println!("{}", rect);
 }
