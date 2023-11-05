@@ -1,4 +1,4 @@
-use std::f64::consts::PI;
+use std::{f64::consts::PI, str::FromStr};
 
 use super::{
     area::Area,
@@ -29,5 +29,23 @@ impl Points for Circle {
 impl Area for Circle {
     fn area(&self) -> f64 {
         PI * self.radius * self.radius
+    }
+}
+
+impl FromStr for Circle {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let parts = s.split(" ").collect::<Vec<_>>();
+
+        if parts.len() != 3 {
+            return Err(anyhow::anyhow!("bad circle from str"));
+        }
+
+        return Ok(Circle {
+            x: parts[0].parse()?,
+            y: parts[1].parse()?,
+            radius: parts[2].parse()?,
+        });
     }
 }

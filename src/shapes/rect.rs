@@ -1,4 +1,4 @@
-use std::fmt::Display;
+use std::{fmt::Display, str::FromStr};
 
 use super::{
     area::Area,
@@ -54,5 +54,24 @@ impl Display for Rect {
             "Rectangle({}, {}): {}:{}",
             self.x, self.y, self.width, self.height
         )
+    }
+}
+
+impl FromStr for Rect {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let parts = s.split(" ").collect::<Vec<_>>();
+
+        if parts.len() != 4 {
+            return Err(anyhow::anyhow!("bad rectangle from str"));
+        }
+
+        return Ok(Rect {
+            x: parts[0].parse()?,
+            y: parts[1].parse()?,
+            width: parts[2].parse()?,
+            height: parts[3].parse()?,
+        });
     }
 }
